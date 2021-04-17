@@ -33,9 +33,6 @@ $(OBJ): $(SRC)
 	$(CC) -c $< -o $@
 
 # exclui os objetos
-# -@del /f /a $(OBJ)
-# -@del /f /a $(OBJF)
- 
 ifeq ($(OS), Windows_NT)
 clear:
 	-@rm ./$(OBJ)
