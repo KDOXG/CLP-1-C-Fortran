@@ -58,8 +58,6 @@ int read (FILE * file) {
     // lê a primeira string
     isEof = getNextLine(file, &line_1, &len_line_1);
 
-    printf("%d\n",len_line_1);
-
     // verifica se o arquivo já chegou no final, ou seja, se possui apenas uma linha
     if (isEof == EOF)
         return MUST2ERR;
