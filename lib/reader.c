@@ -15,7 +15,7 @@ void init (char * filename) {
 
     // chama a função de varredura do arquivo
     // passando um ponteiro para o arquivo e para o contador
-    // apenas se o arquivo não está vazio
+    // apenas se o arquivo existe
     if (file) status = read(file);
     else status = FOPENERR;
 
