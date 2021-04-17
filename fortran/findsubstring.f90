@@ -6,8 +6,6 @@ subroutine findsubstring (lineToSearch, line, lineToSearch_length, line_length)
     integer count
     common/args/ count
     deslocator = 1
-    print *, lineToSearch(:lineToSearch_length)
-    print *, line(deslocator:line_length)
 
     i = index(line(deslocator:line_length),lineToSearch(:lineToSearch_length))        ! Procura se lineToSearch é uma substring de line, se não for, i recebe 0
     if (i.NE.0) then                    ! se i é diferente de 0, ou seja, lineToSearch é uma substring de line
