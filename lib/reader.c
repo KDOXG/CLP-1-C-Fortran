@@ -63,12 +63,12 @@ int read (FILE * file) {
         return MUST2ERR;
     
     // verifica se a primeira linha está formatada corretamente
+    if (len_line_1 > 20)
+        return INVFIRSTERR; 
     for (int i = 0; i < len_line_1; i++)
-        if (len_line_1 > 20)
-            return INVFIRSTERR; 
-        else if (line_1[i] < '0' || line_1[i] > '9')
-                if (line_1[i] < 'A' || line_1[i] > 'z')
-                    return INVFIRSTERR; 
+        if (line_1[i] < '0' || line_1[i] > '9')
+            if (line_1[i] < 'A' || line_1[i] > 'z')
+                return INVFIRSTERR; 
             
 
     do {
@@ -79,6 +79,8 @@ int read (FILE * file) {
         // limpa line_2 para ler as próximas linhas
         free(line_2);
     } while(isEof != EOF); // sai do loop quando chegou no fim do arquivo
+    
+    free(line_1);
 
     return ALLRIGHT;
 }
@@ -88,6 +90,7 @@ int read (FILE * file) {
  * 
  * @param file - o arquivo a ser lido
  * @param sp - ponteiro que devolve a string lida
+ * @param length - tamanho da string, retorna por referência
  * 
  * @return EOF caso tenha chegado no fim do arquivo ou 0 caso contrário
 */
