@@ -20,7 +20,22 @@ int main (int argc, char ** argv) {
     }
     
     // Chama o leitor
-    init(argv[1]);
+    enum status status = init(argv[1]);
+
+    // analisa o retorno e imprime o contador na tela se um erro não foi encontrado             
+    switch(status) {
+        case FOPENERR:
+            printf("\n\tErro: Arquivo não existe\n\n");
+            break;
+        case INVFIRSTERR:
+            printf("\n\tErro: Primeira linha não foi formatada corretamente\n\n");
+            break;
+        case MUST2ERR:
+            printf("\n\tErro: Arquivo precisa ter 2 ou mais linhas\n\n");
+            break;
+        case ALLRIGHT:
+            printf("Resultado: %d", args_.count);
+    }
     
     return 0;
 }

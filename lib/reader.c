@@ -5,7 +5,7 @@
  * 
  * @param filename - nome do arquivo
  */
-void init (char * filename) {
+enum status init (char * filename) {
 
     // arquivo a ser lido
     FILE * file = fopen(filename, "r");                                  
@@ -16,25 +16,13 @@ void init (char * filename) {
     // chama a função de varredura do arquivo
     // passando um ponteiro para o arquivo e para o contador
     // apenas se o arquivo existe
+    enum status status;
     if (file) status = read(file);
     else status = FOPENERR;
 
     fclose(file);
 
-    // analisa o retorno e imprime o contador na tela se um erro não foi encontrado             
-    switch(status) {
-        case FOPENERR:
-            printf("\n\tErro: Arquivo não existe\n\n");
-            break;
-        case INVFIRSTERR:
-            printf("\n\tErro: Primeira linha não foi formatada corretamente\n\n");
-            break;
-        case MUST2ERR:
-            printf("\n\tErro: Arquivo precisa ter 2 ou mais linhas\n\n");
-            break;
-        case ALLRIGHT:
-            printf("Resultado: %d", args_.count);
-    }
+    return status;
 
 }
 

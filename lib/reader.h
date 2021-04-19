@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-void init (char *);
+enum status init (char *);
 int read (FILE *);
 
 int getNextLine (FILE *, unsigned char **, int *);
@@ -17,7 +17,7 @@ int getNextLine (FILE *, unsigned char **, int *);
  *  INVFIRSTERR - invalid first line format
  *  MUST2ERR - file contains less than 2 lines
 **/
-enum {
+enum status {
     // no problems
     ALLRIGHT = 0,
     // file doens't exist
@@ -26,7 +26,7 @@ enum {
     INVFIRSTERR = -2,
     // file contains less than 2 lines
     MUST2ERR = -3
-} status;
+};
 
 extern struct {
     int count;
