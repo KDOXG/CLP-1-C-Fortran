@@ -21,6 +21,8 @@ int main (int argc, char ** argv) {
     
     // Chama o leitor
     int count = init(argv[1]);
+    
+    // Imprime o resultado
     if (count != -1)
         printf("Resultado: %d", count);
     else
