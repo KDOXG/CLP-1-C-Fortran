@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-enum status init (char *);
+int init (char *);
 int read (FILE *);
 
 int getNextLine (FILE *, unsigned char **, int *);
@@ -28,9 +28,6 @@ enum status {
     MUST2ERR = -3
 };
 
-extern struct {
-    int count;
-} args_;
 
 extern void findsubstring_(unsigned char *, unsigned char *, int *lineToSearch_length, int *line_length);
 

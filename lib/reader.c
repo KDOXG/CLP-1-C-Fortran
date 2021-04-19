@@ -5,24 +5,53 @@
  * 
  * @param filename - nome do arquivo
  */
-enum status init (char * filename) {
+int init (char * filename) {
+
+    //avalia e imprime mensagem de erro se nenhum nome de arquivo foi informado
+    if (!strcmp(filename,""))
+    {
+        printf("\n\tErro: Nome do arquivo não informado\n\n");
+        return -1;
+    }
 
     // arquivo a ser lido
-    FILE * file = fopen(filename, "r");                                  
+    FILE * file = fopen(filename, "r");
+
+    // estrutura da variável compartilhada — contador
+    extern struct {
+        int count;
+    } args_;
 
     // inicializa o contador
     args_.count = 0;
+    
+    // guarda o estado de retorno
+    enum status status;
 
     // chama a função de varredura do arquivo
     // passando um ponteiro para o arquivo e para o contador
     // apenas se o arquivo existe
-    enum status status;
     if (file) status = read(file);
     else status = FOPENERR;
 
     fclose(file);
 
-    return status;
+    // analisa o retorno e envia o contador ou imprime o erro se algum foi encontrado             
+    switch(status) {
+        case FOPENERR:
+            printf("\n\tErro: Arquivo não existe\n\n");
+            break;
+        case INVFIRSTERR:
+            printf("\n\tErro: Primeira linha não foi formatada corretamente\n\n");
+            break;
+        case MUST2ERR:
+            printf("\n\tErro: Arquivo precisa ter 2 ou mais linhas\n\n");
+            break;
+        case ALLRIGHT:
+            return args_.count;
+    }
+
+    return -1;
 
 }
 
