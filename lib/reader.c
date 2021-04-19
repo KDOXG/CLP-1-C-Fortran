@@ -17,10 +17,8 @@ int init (char * filename) {
     // arquivo a ser lido
     FILE * file = fopen(filename, "r");
 
-    // estrutura da variável compartilhada — contador
-    extern struct {
-        int count;
-    } args_;
+    // variável compartilhada com o contador
+    extern struct args_ args_;
 
     // inicializa o contador
     args_.count = 0;

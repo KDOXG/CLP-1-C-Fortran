@@ -11,6 +11,12 @@ int read (FILE *);
 int getNextLine (FILE *, unsigned char **, int *);
 
 
+// estrutura do contador
+struct args_ {
+    int count;
+};
+
+
 /**
  *  ALLRIGHT - no problems
  *  FOPENERR - file doens't exist
