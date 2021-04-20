@@ -82,8 +82,9 @@ int read (FILE * file) {
         return INVFIRSTERR; 
     for (int i = 0; i < len_line_1; i++)
         if (line_1[i] < '0' || line_1[i] > '9')
-            if (line_1[i] < 'A' || line_1[i] > 'z')
-                return INVFIRSTERR; 
+            if (line_1[i] < 'A' || line_1[i] > 'Z')
+                if (line_1[i] < 'a' || line_1[i] > 'z')
+                    return INVFIRSTERR; 
             
 
     do {
