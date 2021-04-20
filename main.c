@@ -26,7 +26,7 @@ int main (int argc, char ** argv) {
     if (count != -1)
         printf("Resultado: %d", count);
     else
-        printf("\t#ERRO#\t\n");
+        return -1;
     
     return 0;
 }
